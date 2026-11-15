@@ -282,7 +282,8 @@ function iso(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0'
 function addDays(d,n){return new Date(d.getFullYear(),d.getMonth(),d.getDate()+n)}
 var hijriFmt;
 try{hijriFmt=new Intl.DateTimeFormat('ar-AE-u-ca-islamic-umalqura-nu-latn',{day:'numeric',month:'long',year:'numeric'})}catch(e){hijriFmt=null}
-function hijri(d){try{return hijriFmt?hijriFmt.format(d)+' هـ':''}catch(e){return ''}}
+function hijri(d){try{return hijriFmt?hijriFmt.format(d):''}catch(e){return ''}}
+function dayWord(n){return (n>=3&&n<=10)?'أيام':'يوم'}
 function fmtFull(d){return WD[d.getDay()]+'، '+d.getDate()+' '+MONTHS[d.getMonth()]+' '+d.getFullYear()}
 function fmtShort(d){return WDS[d.getDay()]+' '+d.getDate()+' '+MONTHS[d.getMonth()]}
 
@@ -335,7 +336,7 @@ function renderHome(){
   $('#nextOffDate').textContent=no?fmtShort(no):'—';
   $('#nextOffRel').textContent=no?relTxt(diffDays(now,no)):'';
   var c=monthCounts(now.getFullYear(),now.getMonth());
-  $('#sumText').innerHTML='شهر '+MONTHS[now.getMonth()]+': <span class="w">'+c.w+' يوم دوام</span> · <span class="o">'+c.o+' يوم إجازة</span>';
+  $('#sumText').innerHTML='شهر '+MONTHS[now.getMonth()]+': <span class="w">'+c.w+' '+dayWord(c.w)+' دوام</span> · <span class="o">'+c.o+' '+dayWord(c.o)+' إجازة</span>';
 }
 
 /* ---------- month ---------- */
@@ -362,7 +363,7 @@ function renderMonth(){
     })(i);
   }
   var mc=monthCounts(viewY,viewM);
-  $('#gridSum').textContent=mc.w+' يوم دوام · '+mc.o+' يوم إجازة';
+  $('#gridSum').textContent=mc.w+' '+dayWord(mc.w)+' دوام · '+mc.o+' '+dayWord(mc.o)+' إجازة';
 }
 
 /* ---------- year ---------- */
