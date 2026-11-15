@@ -1,0 +1,15 @@
+{
+  "name": "دوامي",
+  "short_name": "دوامي",
+  "description": "جدول الدوام والإجازات",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f4ee",
+  "theme_color": "#0f8c77",
+  "dir": "rtl",
+  "lang": "ar",
+  "icons": [
+    { "src": "icon.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}
